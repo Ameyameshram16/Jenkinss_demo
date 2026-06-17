@@ -2,24 +2,30 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Ameyameshram16/Jenkinss_demo.git'
+            }
+        }
 
         stage('Build') {
             steps {
-                echo 'Building Application...'
+                sh 'ls -l'
+                sh 'cat index.html'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing Application...'
+                sh 'echo "Checking if index.html exists"'
+                sh 'test -f index.html'
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying Application...'
+                sh 'echo "Deploy step will come next"'
             }
         }
-
     }
 }
